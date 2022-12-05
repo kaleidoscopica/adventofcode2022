@@ -5,7 +5,7 @@ def main():
       assignments.append(line.rstrip('\n'))
   file.close()
 
-  fully_contained = 0
+  overlaps = 0
 
   for item in assignments:
     a, b = item.split(',')
@@ -18,22 +18,22 @@ def main():
     num4 = int(num4)
     range_b = list(range(num3, num4+1))
 
-    fully_contains_a = True
-    fully_contains_b = True
+    overlaps_a = False
+    overlaps_b = False
 
     for number in range_a:
-      if number not in range_b:
-        fully_contains_a = False
+      if number in range_b:
+        overlaps_a = True
         break
     
     for number in range_b:
-      if number not in range_a:
-        fully_contains_b = False
+      if number in range_a:
+        overlaps_b = True
         break
     
-    if fully_contains_a == True or fully_contains_b == True:
-      fully_contained += 1
+    if overlaps_a == True or overlaps_b == True:
+      overlaps += 1
 
-  print("Number of pairs where one is fully contained in the other is:", fully_contained)
+  print("Number of overlaps is:", overlaps)
 
 main()
