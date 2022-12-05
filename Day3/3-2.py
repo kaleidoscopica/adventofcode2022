@@ -17,6 +17,7 @@ def main():
         if char in set_of_3[1]:
           if char in set_of_3[2]:
             badges.append(char)
+            break
       set_of_3 = []
   
   for char in badges:
@@ -26,7 +27,6 @@ def main():
       priority = ord(char) - 38
     priorities += priority
 
-  print(badges)
   print(priorities)
 
 main()
