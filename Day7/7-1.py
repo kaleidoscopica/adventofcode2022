@@ -8,17 +8,17 @@ def main():
   file.close()
 
   for line in data.splitlines():
-    # if we're changing directories further up the tree, 
-    if line == '$ cd ..':
-      # pop the last element on stack and return it as 'size',
+    # if we're changing directories down into the tree, put an empty placeholder at the end of the stack; we'll add to this later
+    if line.startswith('$ cd '):
+      stack.append(0)
+    # else, if we're changing directories to go further up the tree, 
+    elif line == '$ cd ..':
+      # pop the last element on the stack and return it as 'size',
       size = stack.pop()
       # append that size to the files list,
       files.append(size)
       # and add the size to that of the last element on the stack
       stack[-1] += size
-    # if we're changing directories down into the tree, append an empty placeholder at the end of the stack; we'll add to this later
-    elif line.startswith('$ cd '):
-      stack.append(0)
     # if the first char in the line is a digit, it's a file size - add its size to that of the last element on the stack
     elif line[0].isdigit():
       stack[-1] += int(line.split()[0])
