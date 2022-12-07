@@ -13,13 +13,13 @@ def main():
     while len(sop_marker) > len(set(sop_marker)):
       del sop_marker[0]
     # if the set has reached length 4, that's our marker - break
-    if len(sop_marker) == 4:
+    if len(sop_marker) == 14:
       print(sop_marker)
       break
     index += 1
 
   #marker = message[index-4:index]
-  print("The index of the start-of-packet marker is:", index)
+  print("The index of the start-of-message marker is:", index)
   #print(marker)
 
 main()
