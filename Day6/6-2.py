@@ -7,12 +7,12 @@ def main():
   sop_marker = []
 
   for char in message:
-    # if the char isn't in the set yet, add it
+    # add the character to the list
     sop_marker.append(char)
     # if the length of the list is greater than a set made from the list, there's a duplicate in it! remove the earliest entry to 'shift the window'
     while len(sop_marker) > len(set(sop_marker)):
       del sop_marker[0]
-    # if the set has reached length 14, that's our marker - break
+    # if the list has reached length 14, that's our marker - break
     if len(sop_marker) == 14:
       print(sop_marker)
       break
